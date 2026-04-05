@@ -4,6 +4,7 @@ import { initPresetsUI } from './presets-ui.js'
 
 const DEFAULTS = {
   starterHydration: 100,
+  starterPercentage: 20,
   doughHydration: 80,
   saltPercentage: 2,
   starterWeight: 200,
@@ -26,6 +27,20 @@ document.getElementById('app').innerHTML = `
             <input type="range" id="starterHydSlider" min="50" max="200" step="1" value="${DEFAULTS.starterHydration}" />
             <div class="pct-input-wrap">
               <input type="number" id="starterHydNum" value="${DEFAULTS.starterHydration}" min="50" max="200" step="1" />
+              <span class="pct-sym">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">
+            <span>starter amount</span>
+            <span class="field-hint">% of total flour (baker's %)</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="starterPctSlider" min="1" max="50" step="1" value="${DEFAULTS.starterPercentage}" />
+            <div class="pct-input-wrap">
+              <input type="number" id="starterPctNum" value="${DEFAULTS.starterPercentage}" min="1" max="50" step="1" />
               <span class="pct-sym">%</span>
             </div>
           </div>
@@ -148,16 +163,20 @@ function getInputs() {
   return {
     starterWeight: parseFloat(document.getElementById('starterWeight').value),
     starterHydration: parseFloat(document.getElementById('starterHydSlider').value),
+    starterPercentage: parseFloat(document.getElementById('starterPctSlider').value),
     doughHydration: parseFloat(document.getElementById('doughHydSlider').value),
     saltPercentage: parseFloat(document.getElementById('saltSlider').value),
   }
 }
 
-function setInputs({ starterWeight, starterHydration, doughHydration, saltPercentage }) {
+function setInputs({ starterWeight, starterHydration, starterPercentage, doughHydration, saltPercentage }) {
   document.getElementById('starterWeight').value = starterWeight
 
   document.getElementById('starterHydSlider').value = starterHydration
   document.getElementById('starterHydNum').value = starterHydration
+
+  document.getElementById('starterPctSlider').value = starterPercentage
+  document.getElementById('starterPctNum').value = starterPercentage
 
   document.getElementById('doughHydSlider').value = doughHydration
   document.getElementById('doughHydNum').value = doughHydration
@@ -187,6 +206,7 @@ function recalculate() {
 }
 
 linkSliderAndInput('starterHydSlider', 'starterHydNum')
+linkSliderAndInput('starterPctSlider', 'starterPctNum')
 linkSliderAndInput('doughHydSlider', 'doughHydNum')
 linkSliderAndInput('saltSlider', 'saltNum')
 
