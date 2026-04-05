@@ -35,7 +35,7 @@ document.getElementById('app').innerHTML = `
         <div class="field-group">
           <div class="field-label">
             <span>starter amount</span>
-            <span class="field-hint">% of total flour (baker's %)</span>
+            <span class="field-hint">% of total dough weight</span>
           </div>
           <div class="slider-row">
             <input type="range" id="starterPctSlider" min="1" max="50" step="1" value="${DEFAULTS.starterPercentage}" />
