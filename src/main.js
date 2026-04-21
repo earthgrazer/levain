@@ -4,7 +4,7 @@ import { initPresetsUI } from './presets-ui.js'
 
 const DEFAULTS = {
   starterHydration: 100,
-  starterPercentage: 20,
+  starterPercentage: 25,
   doughHydration: 80,
   saltPercentage: 2,
   starterWeight: 200,
